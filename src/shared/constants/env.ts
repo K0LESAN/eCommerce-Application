@@ -38,13 +38,12 @@ interface IEnv extends IScopes {
 }
 
 function getEnv(): IEnv {
-  const scopes: IScopes = import.meta.env.VITE_SCOPES.split(/\s/).reduce(
-    (obj: IScopes, scope: string) => {
+  const scopes: IScopes = (import.meta.env.VITE_SCOPES || '')
+    .split(/\s/)
+    .reduce((obj: IScopes, scope: string) => {
       const [key, value]: string[] = scope.split(':');
       return Object.assign(obj, { [key]: value });
-    },
-    {} as IScopes
-  );
+    }, {} as IScopes);
 
   return {
     PROJECT_KEY: import.meta.env.VITE_PROJECT_KEY,
