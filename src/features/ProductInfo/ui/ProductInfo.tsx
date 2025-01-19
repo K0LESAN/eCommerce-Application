@@ -41,7 +41,7 @@ const ProductInfo = () => {
     setSelectedSize(
       product.masterVariant.attributes?.filter(
         (attr) => attr.name === 'size'
-      )[0].value.key
+      )[0]?.value?.key
     );
 
     const productCategoriesIds = product.categories.map((c) => c.id);
@@ -88,12 +88,12 @@ const ProductInfo = () => {
         <div className={styles.productPrice}>
           <span className={styles['product-price-sale']}>
             {currencyPrice?.discounted
-              ? formatPriceString(currencyPrice?.discounted.value)
+              ? formatPriceString(currencyPrice?.discounted?.value)
               : formatPriceString(currencyPrice?.value)}
           </span>
           <span className={styles['product-price']}>
             {currencyPrice?.discounted
-              ? formatPriceString(currencyPrice.value)
+              ? formatPriceString(currencyPrice?.value)
               : null}
           </span>
         </div>
@@ -118,7 +118,7 @@ const ProductInfo = () => {
                 (v: ProductVariant) =>
                   (v.attributes as Attribute[]).filter(
                     (attr) => attr.name === 'size'
-                  )[0].value.key === 'small'
+                  )[0]?.value?.key === 'small'
               )
             }
             onClick={onSizeSelectHandler}
@@ -136,7 +136,7 @@ const ProductInfo = () => {
                 (v: ProductVariant) =>
                   (v.attributes as Attribute[]).filter(
                     (attr) => attr.name === 'size'
-                  )[0].value.key === 'medium'
+                  )[0]?.value?.key === 'medium'
               )
             }
             onClick={onSizeSelectHandler}
@@ -154,7 +154,7 @@ const ProductInfo = () => {
                 (v: ProductVariant) =>
                   (v.attributes as Attribute[]).filter(
                     (attr) => attr.name === 'size'
-                  )[0].value.key === 'large'
+                  )[0]?.value?.key === 'large'
               )
             }
             onClick={onSizeSelectHandler}
@@ -181,7 +181,7 @@ const ProductInfo = () => {
                 (v) =>
                   (v.attributes as Attribute[]).filter(
                     (attr) => attr.name === 'size'
-                  )[0].value.key === selectedSize
+                  )[0]?.value?.key === selectedSize
               )[0]?.sku
             : null}
         </span>

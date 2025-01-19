@@ -1,8 +1,12 @@
 .page-wrapper {
-  @apply flex justify-center bg-zinc-200 min-h-screen;
+  @apply flex justify-center bg-zinc-200 min-h-screen p-8;
 
   @media (min-width: 712px) {
-    @apply w-screen;
+    @apply w-screen max-w-full;
+  }
+
+  @media screen and (max-width: 500px) {
+    @apply p-2;
   }
 }
 

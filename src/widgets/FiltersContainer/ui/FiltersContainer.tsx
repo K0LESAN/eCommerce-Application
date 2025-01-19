@@ -43,8 +43,8 @@ const FiltersContainer = () => {
   useEffect(() => {
     async function fetchData() {
       const result = await requestCategories();
-      const fetchedCategories = (result as { data: CategoryPagedQueryResponse })
-        .data.results;
+      const fetchedCategories =
+        (result as { data: CategoryPagedQueryResponse }).data?.results || [];
       dispatch(setCategories(fetchedCategories));
 
       const sizes = new Map<string, number>();
