@@ -7,7 +7,7 @@ const MILLIS_IN_YEAR = 1000 * 60 * 60 * 24 * 365.2425;
 describe('not-younger validator', () => {
   it('should return default error message for falsy value with default minimal age', async () => {
     const invalidDate = new Date(Date.now() - 15 * MILLIS_IN_YEAR);
-    const invalidValue = `${invalidDate.getFullYear()}-${String(invalidDate.getMonth()).padStart(2, '0')}-${invalidDate.getDate()}`;
+    const invalidValue = invalidDate.toDateString();
 
     const result = await notYounger()(invalidValue);
 
@@ -17,7 +17,7 @@ describe('not-younger validator', () => {
   it('should return default error message for age, that less than given minimal age', async () => {
     const minimalAge = 3;
     const invalidDate = new Date(Date.now() - 2 * MILLIS_IN_YEAR);
-    const invalidValue = `${invalidDate.getFullYear()}-${String(invalidDate.getMonth()).padStart(2, '0')}-${invalidDate.getDate()}`;
+    const invalidValue = invalidDate.toDateString();
 
     const result = await notYounger(minimalAge)(invalidValue);
 
@@ -27,7 +27,7 @@ describe('not-younger validator', () => {
   it('should return null for truthy value', async () => {
     const minimalAge = 3;
     const validDate = new Date(Date.now() - 4 * MILLIS_IN_YEAR);
-    const validValue = `${validDate.getFullYear()}-${String(validDate.getMonth()).padStart(2, '0')}-${validDate.getDate()}`;
+    const validValue = validDate.toDateString();
 
     const result = await notYounger(minimalAge)(validValue);
 
