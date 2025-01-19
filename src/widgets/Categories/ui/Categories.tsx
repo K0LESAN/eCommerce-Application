@@ -29,7 +29,7 @@ const Categories = () => {
         setAppToken(token);
       }
     } catch (error) {
-      console.error('Error fetching access token:', error);
+      console.error(error);
     }
   };
 
@@ -46,7 +46,7 @@ const Categories = () => {
         }
       }
     );
-    return categoriesResponse.data.results;
+    return categoriesResponse.data?.results || [];
   };
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const Categories = () => {
         const categoryData: Category[] = await fetchCategories();
         dispatch(setCategories(categoryData));
       } catch (error) {
-        console.error('Error setting categories:', error);
+        console.error(error);
       }
     };
 

@@ -67,7 +67,7 @@ const LoginPage = () => {
       if (error instanceof Error) {
         CustomerErrorHandler(error.message);
       } else {
-        console.error(`Unknown error! ${error}`);
+        console.error(error);
       }
     }
   };
