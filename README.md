@@ -1,7 +1,8 @@
 # Deploy
 
-1. https://e-commerce-application-c0lgates-projects.vercel.app
-2. https://e-commerce-application-git-main-c0lgates-projects.vercel.app
+1. https://e-commerce-application-taupe.vercel.app
+2. https://e-commerce-application-c0lgates-projects.vercel.app
+3. https://e-commerce-application-git-main-c0lgates-projects.vercel.app
 
 # eCommerce-Application
 
