@@ -118,20 +118,25 @@ export const appApi = createApi({
         if (priceRange) {
           result.url += `&filter=variants.price.centAmount%3Arange+%28${priceRange.min * 100}+to+${priceRange.max * 100}%29`;
         }
-        sizes;
-        // if (sizes) {
-        //   const selectedSizes = [];
-        //   for (const size in sizes) {
-        //     if (sizes[size as keyof SizesType]) {
-        //       selectedSizes.push(`"${size}"`);
-        //     }
-        //   }
-        //   result.url +=
-        //     '&filter=' +
-        //     encodeURIComponent(
-        //       `variants.attributes.size.key:${selectedSizes.join(',')}`
-        //     );
-        // }
+
+        if (sizes) {
+          const selectedSizes = [];
+
+          for (const size in sizes) {
+            if (sizes[size as keyof SizesType]) {
+              selectedSizes.push(`"${size}"`);
+            }
+          }
+
+          if (selectedSizes.length > 0 && selectedSizes.length < 3) {
+            result.url +=
+              '&filter=' +
+              encodeURIComponent(
+                `variants.attributes.size.key:${selectedSizes.join(',')}`
+              );
+          }
+        }
+
         const searchStrParamName: string = `text.${defaultLocale}`;
         if (searchText && result.params) {
           result.params[searchStrParamName] = `"${searchText || ''}"`;
