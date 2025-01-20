@@ -89,7 +89,8 @@ export const meApi = createApi({
           url: '/carts',
           method: 'POST',
           body: {
-            currency: 'USD'
+            currency: 'USD',
+            country: 'US'
           }
         };
       }

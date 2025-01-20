@@ -7,13 +7,13 @@ describe('passwordValidator', () => {
       expect(result).toStrictEqual({
         result: false,
         message:
-          'Password must be 8+ characters with only letters (upper/lowercase), digits and [!@#$%^&*]'
+          'Password must be 8+ characters with only letters (upper/lowercase) and digits'
       });
     });
   });
 
   it('should return result: true for correct password value', async () => {
-    const validValue = 'Qwerty1!';
+    const validValue = 'Qwerty12';
     const result = await passwordValidator(validValue);
 
     expect(result).toStrictEqual({
