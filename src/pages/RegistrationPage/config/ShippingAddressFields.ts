@@ -1,5 +1,4 @@
 import minLength from '../lib/validators/min-length';
-import onlyLetters from '../lib/validators/only-letters';
 import phoneNumber from '../lib/validators/phone-number';
 import required from '../lib/validators/required';
 import useFieldValidation from '../model/useFieldValidation';
@@ -22,7 +21,7 @@ export const ShippingAddressFields = () => {
       type: 'text',
       id: 'shipping-city',
       placeHolder: 'City',
-      validators: [onlyLetters(), required()]
+      validators: [required()]
     }),
     useFieldValidation({
       type: 'select',

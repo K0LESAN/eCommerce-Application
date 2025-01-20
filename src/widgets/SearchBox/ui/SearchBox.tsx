@@ -2,7 +2,6 @@ import { RootState, useAppSelector } from '@/app/store';
 import useFieldValidation from '@/pages/RegistrationPage/model/useFieldValidation';
 import minLength from '@/pages/RegistrationPage/lib/validators/min-length';
 import { ChangeEvent, FormEvent, useEffect } from 'react';
-import onlyLetters from '@/pages/RegistrationPage/lib/validators/only-letters';
 import useFormValidation from '@/pages/RegistrationPage/model/useFormValidation';
 import { setSearchText } from '@/entities/product/model/productsViewSlice';
 import { useDispatch } from 'react-redux';
@@ -19,7 +18,7 @@ const SearchBox = () => {
     type: 'text',
     id: 'searchtext',
     placeHolder: 'Search text',
-    validators: [minLength(3), onlyLetters()]
+    validators: [minLength(3)]
   });
 
   const searchForm = useFormValidation({ fields: [searchTextInput] });
@@ -69,7 +68,7 @@ const SearchBox = () => {
         <input
           type='text'
           className={styles.searchInput}
-          placeholder='Find your plants'
+          placeholder='search...'
           tabIndex={0}
           value={searchTextInput.value}
           onChange={onSearchTextChangeHandler}
